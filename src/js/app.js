@@ -28,6 +28,19 @@ App = {
       return App.render();
     });
   },
+
+  // events : function(){
+  //   App.contracts.Health.deployed().then(function(i){
+  //     i.addingPatient({},{
+  //       fromBlock : 0,
+  //       toBlock : 'latest'
+  //     }).watch(function(err,event){
+  //       console.log("Event Tiggred",event);
+  //       App.render();
+  //     })
+  //   })
+  // },
+
   render: function () {
     var healthInstance;
     var loader = $("#loader");
@@ -39,7 +52,7 @@ App = {
     web3.eth.getCoinbase(function (err, account) {
       if (err === null) {
         App.account = account;
-        $("#accountAddress").html("Account info : " + App.account);
+        $("#accountAddress").html("Your Account Address : " + App.account);
       }
     });
 
@@ -57,10 +70,6 @@ App = {
           var name = patient[1];
           var desc = patient[2];
           var amount = patient[3];
-          // document.getElementById("patient_id").innerHTML = id;
-          // document.getElementById("patient_name").innerHTML = name;
-          // document.getElementById("description").innerHTML = desc;
-          // document.getElementById("amount").innerHTML = amount;
           var patients = `<div class='card-body'> <h3 class='card-title' id='patient_name'>Name: ${name}</h3> <h3 id='patient_id'>Id: ${id}</h2>   <button class="btn btn-danger" id="info">Show details</button> </div>`;
           patientsInfo.append(patients);
 
@@ -78,13 +87,16 @@ App = {
     var name = $('#name').val();
     var disease = $('#disease').val();
     var amount = $('#amount').val();
-    var time = $('#time').val();
+    var time = $('#time').val();      $("#form").hide();
+
     var date = $('#date').val();
     App.contracts.Health.deployed().then(function(instance){
       return instance.addPatient(name,disease,amount,date,time,{from: App.account});
     }).then(function(result){
       $("#content").hide();
       $("#loader").show();
+      $("#form").hide();
+      App.render();
     }).catch(function(err){
       console.error(err);
     });

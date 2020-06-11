@@ -10,6 +10,8 @@ contract Health {
         string time;
     }
 
+    event addingPatient(uint _patientId);
+
     mapping (uint=>Patient) public patients;
 
     uint public patientCount;
@@ -22,5 +24,6 @@ contract Health {
     function addPatient(string memory _name, string memory _disease, uint _amount, string memory _date, string memory _time) public{
         patientCount++;
         patients[patientCount] = Patient(patientCount, _name, _disease, _amount, _date, _time);
+        emit addingPatient(patientCount);
     }
 }
