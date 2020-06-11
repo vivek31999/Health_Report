@@ -4,10 +4,11 @@ contract Health {
     struct Patient{
         uint id;
         string name;
-        string disease;
-        uint treatmentAmount;
+        uint age;
+        string bloodGroup;
+        string healthStatus;
+        string treatment;
         string date;
-        string time;
     }
 
     event addingPatient(uint _patientId);
@@ -17,13 +18,13 @@ contract Health {
     uint public patientCount;
 
     constructor() public{
-        addPatient("Ram Varma", "Fever and Cold", 100, "12/4/2020","02:00am");
-        addPatient("Manish Mehera", "Typhoid", 234,"29/5/2020","05:34am");
+        addPatient("Ram Varma", 32, "A+", "Fit","None","12/2/2019");
+        addPatient("Manish Mehera", 23,"B+", "Fit","None","29/5/2020");
     }
 
-    function addPatient(string memory _name, string memory _disease, uint _amount, string memory _date, string memory _time) public{
+    function addPatient(string memory _name,uint _age, string memory _bloodgrp, string memory _health,string memory _treatment,  string memory _date) public{
         patientCount++;
-        patients[patientCount] = Patient(patientCount, _name, _disease, _amount, _date, _time);
+        patients[patientCount] = Patient(patientCount, _name, _age, _bloodgrp, _health, _treatment, _date);
         emit addingPatient(patientCount);
     }
 }
