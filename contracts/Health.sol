@@ -5,6 +5,7 @@ contract Health {
         uint id;
         string name;
         uint age;
+        string gender;
         string bloodGroup;
         string healthStatus;
         string treatment;
@@ -18,13 +19,13 @@ contract Health {
     uint public patientCount;
 
     constructor() public{
-        addPatient("Ram Varma", 32, "A+", "Fit","None","12/2/2019");
-        addPatient("Manish Mehera", 23,"B+", "Fit","None","29/5/2020");
+        addPatient("Ram Varma", 32,"Male", "A+", "Fit","None","12/2/2019");
+        addPatient("Manish Mehera", 23,"Male","B+", "Fit","None","29/5/2020");
     }
 
-    function addPatient(string memory _name,uint _age, string memory _bloodgrp, string memory _health,string memory _treatment,  string memory _date) public{
+    function addPatient(string memory _name,uint _age, string memory _gender, string memory _bloodgrp, string memory _health,string memory _treatment,  string memory _date) public{
         patientCount++;
-        patients[patientCount] = Patient(patientCount, _name, _age, _bloodgrp, _health, _treatment, _date);
+        patients[patientCount] = Patient(patientCount, _name, _age, _gender, _bloodgrp, _health, _treatment, _date);
         emit addingPatient(patientCount);
     }
 }

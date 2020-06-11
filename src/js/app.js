@@ -83,12 +83,13 @@ App = {
   addPatient:  function(){
     var name = $('#name').val();
     var age = $('#age').val();
+    var gender = $('#gender').val();
     var grp = $('#grp').val();
     var status = $('#status').val();   
     var treatment = $('#treatment').val();  
     var date = $('#date').val();
     App.contracts.Health.deployed().then(function(instance){
-      return instance.addPatient(name,age,grp,status,treatment,date,{from: App.account});
+      return instance.addPatient(name,age,gender,grp,status,treatment,date,{from: App.account});
     }).then(function(result){
       // $("#form").hide();
       $("#content").hide();
@@ -111,10 +112,11 @@ App = {
       document.getElementById("_id").innerHTML = "Id : "+Id;
       document.getElementById("_name").innerHTML = "Name : "+patients[1];
       document.getElementById("_age").innerHTML = "Age : "+patients[2].c[0];
-      document.getElementById("_grp").innerHTML = "Blood Group : "+patients[3];
-      document.getElementById("_status").innerHTML = "Health Status : "+patients[4];
-      document.getElementById("_treatment").innerHTML = "Treatment : "+patients[5];
-      document.getElementById("_date").innerHTML = "Date : "+patients[6];
+      document.getElementById("_gender").innerHTML = "Gender : "+patients[3];
+      document.getElementById("_grp").innerHTML = "Blood Group : "+patients[4];
+      document.getElementById("_status").innerHTML = "Health Status : "+patients[5];
+      document.getElementById("_treatment").innerHTML = "Treatment : "+patients[6];
+      document.getElementById("_date").innerHTML = "Date : "+patients[7];
     })
   }
 
