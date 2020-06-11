@@ -1,0 +1,21 @@
+.header{
+    padding : 20px;
+    background-color: rgb(111, 218, 111);
+}
+
+#content{
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body{
+    border: 1px solid rgb(106, 170, 90);
+    border-radius: 5px;
+    padding-bottom: 20px;
+    align-items: center;
+    width: auto;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+
+}

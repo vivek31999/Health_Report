@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Patients Information</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h2 class="text-center header">Patients Information</h2>
+      </header>
+      <div id="accountAddress"></div>
+      <div class="row">
+        <div id="loader">
+          <p class="text-center">Loading...</p>
+        </div>
+        <div id="content">
+          <div class="col-md-8">
+            <div class="card w-75" id="patientsList"></div>
+          </div>
+          <div class="col-4-md">
+              <div id="info-box"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <button class="btn btn-primary" onclick="showForm()">Add patient</button>
+          <div id="form"></div>
+      </div>
+    </div>
+
+    
+
+    <!-- jQuery (necessary for` Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+      function showForm(){
+        const form =  `<form onSubmit='App.addPatient(); return false;'>
+      <div class='form-group'>
+        <label for='Name'>Add Name :</label>
+        <input id='name' class='form-control' type='text'>
+        <br>
+        <label for='disease'>Add Disease :</label>
+        <input class='form-control' id='disease' type='text'>
+        <label for='amount'>Add Treatment Amount:</label>
+        <input class='form-control' id='amount' type='number'>
+        <label for='time'>Add time</label>
+        <input type='text' id='time' class='form-control'>
+        <label for='date'>Add Date</label>
+        <input class='form-control' type='text' id="date">
+      </div>
+      <button class='btn btn-primary' type='submit'>Add</button>
+    </form>`;
+    document.getElementById("form").innerHTML = form;
+  } 
+    </script>
+  </body>
+</html>
