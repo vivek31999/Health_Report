@@ -52,7 +52,7 @@ App = {
     web3.eth.getCoinbase(function (err, account) {
       if (err === null) {
         App.account = account;
-        $("#accountAddress").html("Your Account Address : " + App.account);
+        $("#accountAddress").html("<h4>Your Account Address :</h4> " + App.account);
       }
     });
 
@@ -68,7 +68,7 @@ App = {
         healthInstance.patients(i).then(function (patient) {
           var id = patient[0];
           var name = patient[1];
-          var patients = `<div class='card-body'> <h3 class='card-title' id='patient_name'>Name: ${name}</h3> <h3 id='patient_id'>${id}</h2>   <button class="btn btn-danger" onClick="App.showDetails(this); return false;" id="info" data-id='${id}'>Show details</button> </div>`;
+          var patients = `<div class='card-body'> <div class='row'><h3 class='col-md-6 card-title' id='patient_name'>Name: ${name}</h3> <h3  class='col-md-3' id='patient_id'>Id : ${id}</h2> <button class="btn btn-success col-md-2" onClick="App.showDetails(this); return false;" id="info" data-id='${id}'>Show details</button></div> </div>`;
           patientsInfo.append(patients);
         });
       }
@@ -89,9 +89,9 @@ App = {
     App.contracts.Health.deployed().then(function(instance){
       return instance.addPatient(name,disease,amount,date,time,{from: App.account});
     }).then(function(result){
+      // $("#form").hide();
       $("#content").hide();
       $("#loader").show();
-      $("#form").hide();
       App.render();
     }).catch(function(err){ 
       console.error(err);
@@ -110,7 +110,7 @@ App = {
       document.getElementById("_id").innerHTML = "Id : "+Id;
       document.getElementById("_name").innerHTML = "Name : "+patients[1];
       document.getElementById("_desc").innerHTML = "Description : "+patients[2];
-      document.getElementById("_amount").innerHTML = "Amount : "+patients[3].c[0];
+      document.getElementById("_amount").innerHTML = "Amount : Rs."+patients[3].c[0];
       document.getElementById("_date").innerHTML = "Date : "+patients[4];
       document.getElementById("_time").innerHTML = "Time : "+patients[5];
     })
