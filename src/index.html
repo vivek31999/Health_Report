@@ -5,30 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Patients Information</title>
-
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
 
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <header>
         <h2 class="text-center header">Patients Information</h2>
       </header>
       <div id="accountAddress"></div>
-      <div class="row">
         <div id="loader">
           <p class="text-center">Loading...</p>
         </div>
-        <div id="content">
+        <div class="row" id="content">
           <div class="col-md-8">
             <div class="card w-75" id="patientsList"></div>
           </div>
-          <div class="col-4-md">
-              <div id="info-box"></div>
+          <div class="col-md-4">
+              <div id="info-box">
+                <h3 id="_id"></h3>
+                <h3 id="_name"></h3>
+                <h3 id="_desc"></h3>
+                <h3 id="_date"></h3>
+                <h3 id="_time"></h3>
+                <h3 id="_amount"></h3>
+              </div>
           </div>
         </div>
-      </div>
       <div class="row">
           <button class="btn btn-primary" onclick="showForm()">Add patient</button>
           <div id="form"></div>

@@ -68,11 +68,8 @@ App = {
         healthInstance.patients(i).then(function (patient) {
           var id = patient[0];
           var name = patient[1];
-          var desc = patient[2];
-          var amount = patient[3];
-          var patients = `<div class='card-body'> <h3 class='card-title' id='patient_name'>Name: ${name}</h3> <h3 id='patient_id'>Id: ${id}</h2>   <button class="btn btn-danger" id="info">Show details</button> </div>`;
+          var patients = `<div class='card-body'> <h3 class='card-title' id='patient_name'>Name: ${name}</h3> <h3 id='patient_id'>${id}</h2>   <button class="btn btn-danger" onClick="App.showDetails(this); return false;" id="info" data-id='${id}'>Show details</button> </div>`;
           patientsInfo.append(patients);
-
         });
       }
       loader.hide();
@@ -87,8 +84,7 @@ App = {
     var name = $('#name').val();
     var disease = $('#disease').val();
     var amount = $('#amount').val();
-    var time = $('#time').val();      $("#form").hide();
-
+    var time = $('#time').val();     
     var date = $('#date').val();
     App.contracts.Health.deployed().then(function(instance){
       return instance.addPatient(name,disease,amount,date,time,{from: App.account});
@@ -97,9 +93,27 @@ App = {
       $("#loader").show();
       $("#form").hide();
       App.render();
-    }).catch(function(err){
+    }).catch(function(err){ 
       console.error(err);
     });
+  },
+
+  showDetails : function(id){
+    // const btn = [...document.querySelectorAll("#info")];
+    // console.log(btn);
+    // var id = parseInt($('#info').val());
+    // console.log(id)
+    var Id = id.getAttribute("data-id");
+    App.contracts.Health.deployed().then(function(i){
+      return i.patients(Id);
+    }).then(function(patients){
+      document.getElementById("_id").innerHTML = "Id : "+Id;
+      document.getElementById("_name").innerHTML = "Name : "+patients[1];
+      document.getElementById("_desc").innerHTML = "Description : "+patients[2];
+      document.getElementById("_amount").innerHTML = "Amount : "+patients[3].c[0];
+      document.getElementById("_date").innerHTML = "Date : "+patients[4];
+      document.getElementById("_time").innerHTML = "Time : "+patients[5];
+    })
   }
 
 };

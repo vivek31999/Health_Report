@@ -17,5 +17,8 @@
     margin: 10px;
     display: flex;
     flex-direction: column;
+}
 
+#info-box{
+    border: 1px solid black;
 }
