@@ -4,3 +4,8 @@ A Blockchain based health report system where health report of patients are stor
 An User with Authorized account can add a patient's information in the blockchain
 
 Front end made in HTML, CSS , Javascript (web3.js) and backend in solidity.
+
+Main Page:
+x-special/nautilus-clipboard
+copy
+file:///home/vivek/Desktop/BlockChain/ScreenShots/main.png
