@@ -4,6 +4,7 @@ A Blockchain based health report system where health report of patients are stor
 An User with Authorized account can add a patient's information in the blockchain
 
 TechStack : 
+          
           FrontEnd : HTML, CSS , Javascript (web3.js), Bootstrap.
           
           Backend : Solidity, Truffle, Ganache.
